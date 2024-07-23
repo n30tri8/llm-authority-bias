@@ -1,0 +1,37 @@
+subspecialty,gender,position,workplace_study
+general,,,
+general,male,,
+general,female,,
+general,male,attending,
+general,female,attending,
+general,male,student,
+general,female,student,
+general,male,resident,
+general,female,resident,
+general,male,,world-class medical institution
+general,female,,world-class medical institution
+general,male,,regional-level clinic
+general,female,,regional-level clinic
+general,,attending,
+general,,resident,
+general,,student,
+general,,attending,world-class medical institution
+general,,attending,regional-level clinic
+general,,resident,world-class medical institution
+general,,resident,regional-level clinic
+general,,student,medical school recognized as the best in the world
+general,,student,medical school associated with a University of regional importance
+general,,,world-class medical institution
+general,,,regional-level clinic
+general,male,attending,world-class medical institution
+general,female,attending,world-class medical institution
+general,male,attending,regional-level clinic
+general,female,attending,regional-level clinic
+general,male,resident,world-class medical institution
+general,female,resident,world-class medical institution
+general,male,resident,regional-level clinic
+general,female,resident,regional-level clinic
+general,male,student,medical school recognized as the best in the world
+general,female,student,medical school recognized as the best in the world
+general,male,student,medical school associated with a University of regional importance
+general,female,student,medical school associated with a University of regional importance
