@@ -3,7 +3,7 @@ import json
 from backends.anthropic_backend import AnthropicBackend
 from backends.huggingface_backend import HuggingfaceBackend
 def get_model(model_dict):
-    model_name = model_dict['name']
+    model_name = model_dict['model_name']
     backend = model_dict['backend']
     gated = True if "gated" in model_dict else False
     max_tokens = model_dict['max_tokens']
