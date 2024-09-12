@@ -1,9 +1,10 @@
 from anthropic import Anthropic
+from backends import get_credentials
 
 
 class AnthropicBackend(Anthropic):
     def __init__(self, model_name, max_tokens=512):
-        super(AnthropicBackend, self).__init__()
+        super(AnthropicBackend, self).__init__(api_key=get_credentials("anthropic")['api_key'])
         self.model_name = model_name
         self.max_tokens = max_tokens
         self.temperature = 0
