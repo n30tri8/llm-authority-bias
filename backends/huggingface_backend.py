@@ -2,7 +2,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
 class HuggingfaceBackend:
-    def __init__(self, model_id, api_key=None, max_tokens=512, temperature=0):
+    def __init__(self, model_id, api_key=None, max_tokens=512, temperature=0.0):
         self.model_name = model_id
         if api_key is not None:
             self.model = AutoModelForCausalLM.from_pretrained(model_id, token=api_key, device_map="auto", torch_dtype="auto")
@@ -37,6 +37,7 @@ class HuggingfaceBackend:
             message_tokens,
             temperature=self.temperature,
             max_new_tokens=self.max_tokens,
+            do_sample=False
         )
 
         response = self.tokenizer.batch_decode(generated_ids[:, input_length:], skip_special_tokens=True)[0]
