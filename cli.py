@@ -23,7 +23,7 @@ def get_args_parser():
     return parser
 
 def main(args):
-    config_root = "../config"
+    config_root = "config"
     yaml = YAML(typ='rt')
     config = yaml.load(open(os.path.join(config_root, "config.yaml"), 'r'))
 
