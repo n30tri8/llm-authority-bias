@@ -1,13 +1,11 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
-from backends import get_credentials
-
 class HuggingfaceBackend:
     def __init__(self, model_name, api_key=None, max_tokens=512, temperature=0):
         self.model_name = model_name
         if api_key is not None:
-            self.model = AutoModelForCausalLM.from_pretrained(model_name, token=get_credentials("huggingface")['api_key'], device_map="auto", torch_dtype="auto")
+            self.model = AutoModelForCausalLM.from_pretrained(model_name, token=api_key, device_map="auto", torch_dtype="auto")
         else:
             self.model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto", torch_dtype="auto")
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
