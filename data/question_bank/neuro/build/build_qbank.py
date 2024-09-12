@@ -57,7 +57,7 @@ def extract_mcqs(text):
     return mcqs
 
 # Path to your PDF file
-pdf_path = '/home/filippo/PycharmProjects/llm-authority-bias/question_bank/neuro/source/Esteban Cheng-Ching, Eric P. Baron, Lama Chahine, Alexander Rae- - Comprehensive Review in Clinical Neurology (2016, LWW).pdf'  # Replace with your actual PDF file path
+pdf_path = '/data/question_bank/neuro/source/Esteban Cheng-Ching, Eric P. Baron, Lama Chahine, Alexander Rae- - Comprehensive Review in Clinical Neurology (2016, LWW).pdf'  # Replace with your actual PDF file path
 
 # Extract text
 extracted_text = extract_text_from_pdf(pdf_path)
