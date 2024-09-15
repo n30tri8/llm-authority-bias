@@ -4,5 +4,10 @@
     "model_id": "meta-llama/Meta-Llama-3.1-8B-Instruct",
     "backend": "huggingface",
     "gated": true
+  },
+  {
+    "model_name": "Meta-Llama-3.1-8B-Instruct-Turbo-Unsloth",
+    "model_id": "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit",
+    "backend": "huggingface"
   }
 ]
