@@ -39,7 +39,7 @@
     "open_weight": true
   },
   {
-    "model_name": "Gemma2-27B-It",
+    "model_name": "Gemma2-27B-It-Deepinfra",
     "model_id": "google/gemma-2-27b-it",
     "backend": "openai_compatible",
     "open_weight": true

@@ -1,21 +1,7 @@
 import argparse
 import pandas as pd
 
-def get_args_parser():
-    parser = argparse.ArgumentParser('', add_help=False)
-    parser.add_argument('--qbank', type=str, required=True)
-    parser.add_argument('--model', type=str, required=True)
-    parser.add_argument('--name', type=str, default=None)
-    parser.add_argument('--subspecialty', type=str, required=True)
-    parser.add_argument('--workplace_study', type=str, default=None)
-    parser.add_argument('--position', type=str, default=None)
-    parser.add_argument('--gender', type=str, default=None)
-    parser.add_argument('--first_person', action='store_true')
-    return parser
-
 def measure(model, qbank, profession, workplace_study, position, gender, first_person, results_file):
-
-
     question_ids = []
     correct_answers = []
     expert_answers = []
