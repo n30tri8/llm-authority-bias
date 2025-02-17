@@ -15,22 +15,25 @@ def get_args_parser():
     measure_parsers = sub_parsers.add_parser("measure")
     measure_parsers.add_argument('--qbank', type=str, required=True)
     measure_parsers.add_argument('--model', type=str, required=True)
-    measure_parsers.add_argument('--profession', type=str, required=True)
+    measure_parsers.add_argument('--profession', type=str, default='general neurologist')
     measure_parsers.add_argument('--workplace_study', type=str, default=None)
     measure_parsers.add_argument('--position', type=str, default=None)
     measure_parsers.add_argument('--gender', type=str, default=None)
     measure_parsers.add_argument('--first_person', action='store_true')
+    measure_parsers.add_argument('--max_tokens', type=int, default=512)
+    measure_parsers.add_argument('--temperature', type=float, default=0)
+    measure_parsers.add_argument('--results_folder', type=str, default="results")
     return parser
 
 def main(args):
-    config_root = "../config"
-    yaml = YAML(typ='rt')
-    config = yaml.load(open(os.path.join(config_root, "config.yaml"), 'r'))
-
     model_name = args.model
     model_registry = json.load(open(os.path.join("../backends/model_registry.json"), 'r'))
     model_dict = next((item for item in model_registry if item.get('model_name') == model_name), None)
-    model = get_model(model_dict, config)
+    gen_args = {
+        'max_tokens': args.max_tokens,
+        'temperature': args.temperature,
+    }
+    model = get_model(model_dict, gen_args)
 
     """ Convert the question bank file into a dataframe """
     qbank_df = pd.read_csv(args.qbank)
