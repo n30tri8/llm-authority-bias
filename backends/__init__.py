@@ -1,9 +1,11 @@
 import json
-
+from pathlib import Path
 from typing import Dict, Union
 from backends.anthropic_backend import AnthropicBackend
 from backends.huggingface_backend import HuggingfaceBackend
 from backends.openai_compatible_backend import GenericOpenAIBackend
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 def get_model(model_dict: Dict[str, Union[str, bool]], gen_args: Dict[str, Union[int, float]]):
     model_id = model_dict['model_id']
     model_name = model_dict['model_name']
@@ -21,6 +23,6 @@ def get_model(model_dict: Dict[str, Union[str, bool]], gen_args: Dict[str, Union
 
 
 def get_credentials(backend):
-    credentials_file = "../keys.json"
+    credentials_file = PROJECT_ROOT / "keys.json"
     credentials = json.load(open(credentials_file))
     return credentials[backend]

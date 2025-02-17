@@ -1,6 +1,5 @@
 import argparse
 import pandas as pd
-from ruamel.yaml import YAML
 import os
 import json
 
@@ -8,6 +7,7 @@ from utils.utils import get_results_path, create_results_file
 from experiments.measure.measure import measure
 from experiments.measure.get_known_questions import get_known_questions
 from backends import get_model
+from pathlib import Path
 
 def get_args_parser():
     parser = argparse.ArgumentParser('', add_help=False)
@@ -25,9 +25,11 @@ def get_args_parser():
     measure_parsers.add_argument('--results_folder', type=str, default="results")
     return parser
 
+PROJECT_ROOT = Path(__file__).resolve().parent
+
 def main(args):
     model_name = args.model
-    model_registry = json.load(open(os.path.join("../backends/model_registry.json"), 'r'))
+    model_registry = json.load(open(PROJECT_ROOT / "backends/model_registry.json", 'r'))
     model_dict = next((item for item in model_registry if item.get('model_name') == model_name), None)
     gen_args = {
         'max_tokens': args.max_tokens,
@@ -45,7 +47,7 @@ def main(args):
         position = args.position
         gender = args.gender
         first_person = args.first_person
-        result_path = get_results_path(config['results_root'], model_name, first_person)
+        result_path = get_results_path(args.results_folder, model_name, first_person)
         results_file = create_results_file(results_path=result_path)
 
         # create file to add the model questions, add them to an existing one or do not extract model questions (they already exist)

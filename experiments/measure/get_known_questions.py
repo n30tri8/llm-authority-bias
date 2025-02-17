@@ -11,16 +11,8 @@ def get_known_questions(model, qbank, qbank_root):
     total_answers = []
     full_answers = []
 
-    """ Create a temporary file where to save the answers (to prevent issues caused by a poor network connection) """
-    tmp_file_path = os.path.join(qbank_root,"tmp_answer_file.txt")
-    if not os.path.exists(tmp_file_path):
-        # Create the file
-        with open(tmp_file_path, 'a'):
-            os.utime(tmp_file_path, None)
     for index, row in qbank.iterrows():
         question = {'role':'user', 'content':f'Question: {row["question"]}\nPossible answers:\na:{row["a"]}\nb:{row["b"]}\nc:{row["c"]}\nd:{row["d"]}\ne:{row["e"]}'}
-        question_known = -1
-        answer = ""
         if row['block'] not in seen_question_blocks and row['block'] != -1 and row['category'] != 'Psychiatry':
             seen_question_blocks.add(row['block'])
             """ Answer the question """
@@ -47,9 +39,6 @@ def get_known_questions(model, qbank, qbank_root):
         else:
             total_answers.append(-1) # It doesn't even try to answer
             full_answers.append("")
-        with open(tmp_file_path, 'a') as f:
-            f.write(f"<<<<{question_known}>>>>\n")
-            f.write(f"{answer if question_known==True else ''}\n")
     qbank[model.model_name+'-known'] = total_answers
     qbank[model.model_name + '-fullanswer'] = full_answers
     qbank.to_csv(os.path.join(qbank_root, "question_bank.csv"), index=False)
