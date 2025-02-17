@@ -18,18 +18,19 @@ def get_known_questions(model, qbank, qbank_root):
         with open(tmp_file_path, 'a'):
             os.utime(tmp_file_path, None)
     for index, row in qbank.iterrows():
-        question = f'Question: {row["question"]}\nPossible answers:\na:{row["a"]}\nb:{row["b"]}\nc:{row["c"]}\nd:{row["d"]}\ne:{row["e"]}'
+        question = {'role':'user', 'content':f'Question: {row["question"]}\nPossible answers:\na:{row["a"]}\nb:{row["b"]}\nc:{row["c"]}\nd:{row["d"]}\ne:{row["e"]}'}
         question_known = -1
         answer = ""
         if row['block'] not in seen_question_blocks and row['block'] != -1 and row['category'] != 'Psychiatry':
             seen_question_blocks.add(row['block'])
             """ Answer the question """
-            prompt_task = f"{question}"
-            answer = model.chat(prompt=prompt_task)
+            answer = model.chat(prompt=[question])
             print(answer)
+            answer = {'role':'assistant', 'content':answer}
             """ Get the answer in a more uniformed format by asking to extract it from the previous answer"""
-            prompt_format_answer = f"Below I provide you with an answer I received to a question I asked to one of my students. It contains also the rationale for the given answer, and I want to extract only the provided answer (which can have values a,b,c,d or e). Please extract the letter provided by the student among a,b,c,d,e. Write only the letter and nothing else. Ignore punctuation as well. \nAnswer:\n{answer}"
-            formatted_answer = model.chat(prompt=prompt_format_answer)
+            prompt_format_answer = {'role': 'user', 'content': "I'm sorry I didn't understand what was final answer. Please extract the letter corresponding to the answer among a,b,c,d,e. Answer ONLY with the appropriate letter and nothing else."}
+            prompt = ([question, answer, prompt_format_answer])
+            formatted_answer = model.chat(prompt=prompt)
             print(f'{index}, {formatted_answer}')
             if formatted_answer == row['answer']:
                 """ The model provides the correct answer. """

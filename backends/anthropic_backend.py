@@ -9,16 +9,13 @@ class AnthropicBackend(Anthropic):
         self.temperature = 0
 
     def chat(self, prompt, system=None):
+        message = []
+        print(prompt)
         if system is None:
             message = self.messages.create(
                 max_tokens=self.max_tokens,
                 temperature=self.temperature,
-                messages=[
-                    {
-                        "role": "user",
-                        "content": prompt,
-                    }
-                ],
+                messages=prompt,
                 model=self.model_name,
             )
         else:
@@ -26,12 +23,7 @@ class AnthropicBackend(Anthropic):
                 max_tokens=self.max_tokens,
                 temperature=self.temperature,
                 system=system,
-                messages=[
-                    {
-                        "role": "user",
-                        "content": prompt,
-                    }
-                ],
+                messages=prompt,
                 model=self.model_name,
             )
         return message.content[0].text

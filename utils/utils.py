@@ -6,9 +6,9 @@ import re
 
 def get_results_path(results_root, model_name, first_person):
     if first_person:
-        results_path = os.path.join('../../', results_root, model_name + '_fp')
+        results_path = os.path.join(results_root, model_name + '_fp')
     else:
-        results_path = os.path.join('../../', results_root, model_name)
+        results_path = os.path.join(results_root, model_name)
     return results_path
 
 def create_results_file(results_path):

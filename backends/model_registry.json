@@ -6,8 +6,47 @@
     "gated": true
   },
   {
+    "model_name": "LLaMa-3.1-8B",
+    "model_id": "meta-llama/Meta-Llama-3.1-8B",
+    "backend": "huggingface",
+    "gated": true
+  },
+  {
     "model_name": "Meta-Llama-3.1-8B-Instruct-Turbo-Unsloth",
     "model_id": "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit",
     "backend": "huggingface"
+  },
+  {
+    "model_name": "Llama-3-70B-Together.ai",
+    "model_id": "meta-llama/Llama-3-70b-chat-hf",
+    "backend": "openai_compatible",
+    "release_date": "18-04-24",
+    "open_weight": true,
+    "parameters": "70B"
+  },
+  {
+    "model_name": "Llama-3-8B-Together.ai",
+    "model_id": "meta-llama/Llama-3-8b-chat-hf",
+    "backend": "openai_compatible",
+    "release_date": "18-04-24",
+    "open_weight": true,
+    "parameters": "8B"
+  },
+  {
+    "model_name": "Llama-3-8B-Instruct-Deepinfra",
+    "model_id": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "backend": "openai_compatible",
+    "open_weight": true
+  },
+  {
+    "model_name": "Gemma2-27B-It",
+    "model_id": "google/gemma-2-27b-it",
+    "backend": "openai_compatible",
+    "open_weight": true
+  },
+  {
+    "model_name": "claude-3-haiku-20240307",
+    "model_id": "claude-3-haiku-20240307",
+    "backend": "anthropic"
   }
 ]

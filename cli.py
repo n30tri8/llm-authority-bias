@@ -23,12 +23,12 @@ def get_args_parser():
     return parser
 
 def main(args):
-    config_root = "config"
+    config_root = "../config"
     yaml = YAML(typ='rt')
     config = yaml.load(open(os.path.join(config_root, "config.yaml"), 'r'))
 
     model_name = args.model
-    model_registry = json.load(open(os.path.join("backends/model_registry.json"), 'r'))
+    model_registry = json.load(open(os.path.join("../backends/model_registry.json"), 'r'))
     model_dict = next((item for item in model_registry if item.get('model_name') == model_name), None)
     model = get_model(model_dict, config)
 
