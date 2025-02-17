@@ -1,37 +1,37 @@
-subspecialty,gender,position,workplace_study
-general,,,
-general,male,,
-general,female,,
-general,male,attending,
-general,female,attending,
-general,male,student,
-general,female,student,
-general,male,resident,
-general,female,resident,
-general,male,,world-class institution
-general,female,,world-class institution
-general,male,,regional-level institution
-general,female,,regional-level institution
-general,,attending,
-general,,resident,
-general,,student,
-general,,attending,world-class institution
-general,,attending,regional-level institution
-general,,resident,world-class institution
-general,,resident,regional-level institution
-general,,student,world-class institution
-general,,student,regional-level institution
-general,,,world-class institution
-general,,,regional-level institution
-general,male,attending,world-class institution
-general,female,attending,world-class institution
-general,male,attending,regional-level institution
-general,female,attending,regional-level institution
-general,male,resident,world-class institution
-general,female,resident,world-class institution
-general,male,resident,regional-level institution
-general,female,resident,regional-level institution
-general,male,student,world-class institution
-general,female,student,world-class institution
-general,male,student,regional-level institution
-general,female,student,regional-level institution
+gender,position,workplace_study
+,,
+male,,
+female,,
+male,attending,
+female,attending,
+male,student,
+female,student,
+male,resident,
+female,resident,
+male,,world-class institution
+female,,world-class institution
+male,,regional-level institution
+female,,regional-level institution
+,attending,
+,resident,
+,student,
+,attending,world-class institution
+,attending,regional-level institution
+,resident,world-class institution
+,resident,regional-level institution
+,student,world-class institution
+,student,regional-level institution
+,,world-class institution
+,,regional-level institution
+male,attending,world-class institution
+female,attending,world-class institution
+male,attending,regional-level institution
+female,attending,regional-level institution
+male,resident,world-class institution
+female,resident,world-class institution
+male,resident,regional-level institution
+female,resident,regional-level institution
+male,student,world-class institution
+female,student,world-class institution
+male,student,regional-level institution
+female,student,regional-level institution
