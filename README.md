@@ -23,7 +23,9 @@ The interface is supports the following arguments:
 - ```results_folder```: the folder where to save the results (default: _results_)
 
 So, for example, if our cognitive authority is an attending female neurologist at a regional-level institution (third-person) the command would look like this:  
-```python cli.py measure --qbank QBANK_PATH --model "claude-3-haiku-20240307" --profession "general neurologist" --gender "female" --position "attending" --workplace_study "regional-level institution"```
+```bash
+python cli.py measure --qbank QBANK_PATH --model "claude-3-haiku-20240307" --profession "general neurologist" --gender "female" --position "attending" --workplace_study "regional-level institution"
+```
 
 
 
