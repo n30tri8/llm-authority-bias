@@ -31,3 +31,6 @@ python cli.py measure --qbank QBANK_PATH --model "claude-3-haiku-20240307" --pro
 
 # Running all the experiments with the Cognitive Authorities
 In case you wish to run the experiments for each of the cognitive authorities, you may find the bash scripts in the ```scripts/``` subfolders (```first_person``` for the experiments with the first person and ```third_person``` for those in the third person).
+
+# Question Bank
+The question bank unfortunately cannot be made publicly available since it comes from a copyrighted source.
