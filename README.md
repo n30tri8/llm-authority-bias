@@ -27,10 +27,15 @@ So, for example, if our cognitive authority is an attending female neurologist a
 python cli.py measure --qbank QBANK_PATH --model "claude-3-haiku-20240307" --profession "general neurologist" --gender "female" --position "attending" --workplace_study "regional-level institution"
 ```
 
-
-
 # Running all the experiments with the Cognitive Authorities
 In case you wish to run the experiments for each of the cognitive authorities, you may find the bash scripts in the ```scripts/``` subfolders (```first_person``` for the experiments with the first person and ```third_person``` for those in the third person).
+
+# Build a summary of your experiments
+Run the command: 
+```bash
+python cli.py --model MODEL_NAME
+```
+```results_folder``` and ```first_person``` are optional arguments. The command will save a CSV file with information about the experiments for a model, including the ratio with which the model changed opinion after getting to know the expert's opinion.
 
 # Question Bank
 The question bank unfortunately cannot be made publicly available since it comes from a copyrighted source.
