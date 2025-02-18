@@ -33,7 +33,7 @@ In case you wish to run the experiments for each of the cognitive authorities, y
 # Build a summary of your experiments
 Run the command: 
 ```bash
-python cli.py --model MODEL_NAME
+python cli.py summarize --model MODEL_NAME
 ```
 ```results_folder``` and ```first_person``` are optional arguments. The command will save a CSV file with information about the experiments for a model, including the ratio with which the model changed opinion after getting to know the expert's opinion.
 
