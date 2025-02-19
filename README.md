@@ -42,7 +42,7 @@ Run the command
 ```bash
 python cli.py correlation
 ```
-```--results_path``` and ```--first_person``` are optional arguments. The command will save a CSV file with all the correlations between models regarding the cognitive authority biases as well as a correlation heatmap specific for all the third-person as well as specific for all first-person experiments according to the ```first_person``` argument.
+```--results_path``` and ```--first_person``` are optional arguments. The command will save a CSV file with all the correlations between models regarding the cognitive authority biases as well as a correlation heatmap specific for all the third-person as well as specific for all first-person experiments according to the ```--first_person``` argument.
 
 # Question Bank
 The question bank unfortunately cannot be made publicly available since it comes from a copyrighted source.
