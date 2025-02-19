@@ -1,14 +1,12 @@
-from models import model_dict
-
 import os
 import pandas as pd
 import re
 
-def get_results_path(results_root, model_name, first_person):
-    if first_person:
-        results_path = os.path.join(results_root, model_name + '_fp')
-    else:
-        results_path = os.path.join(results_root, model_name)
+from pathlib import Path
+
+def get_results_path(results_root: Path, model_name: str, first_person: bool):
+    last_folder_name = f"{model_name}_fp" if first_person else f"{model_name}"
+    results_path = results_root / last_folder_name
     return results_path
 
 def create_results_file(results_path):

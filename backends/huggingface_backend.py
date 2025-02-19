@@ -20,22 +20,7 @@ class HuggingfaceBackend:
             self.model.generation_config.pad_token_id = self.tokenizer.eos_token_id
 
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-    def chat(self, prompt, system=None):
-        """message = []
-
-        # Add system message only if 'system' is not None
-        if system is not None:
-            message.append({
-                "role": "system",
-                "content": system
-            })
-
-        # Add the user message
-        message.append({
-            "role": "user",
-            "content": prompt  # Assuming 'user_content' is the user's input
-        })"""
-        print(prompt)
+    def chat(self, prompt):
         message_tokens = self.tokenizer.apply_chat_template(prompt, add_generation_prompt=True, return_tensors="pt").to("cuda")
         input_length = message_tokens.shape[-1]
         generated_ids = self.model.generate(

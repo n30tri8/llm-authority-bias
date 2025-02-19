@@ -9,8 +9,6 @@ class AnthropicBackend(Anthropic):
         self.temperature = 0
 
     def chat(self, prompt, system=None):
-        message = []
-        print(prompt)
         if system is None:
             message = self.messages.create(
                 max_tokens=self.max_tokens,
