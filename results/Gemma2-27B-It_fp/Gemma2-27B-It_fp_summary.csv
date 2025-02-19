@@ -1,0 +1,37 @@
+model,profession,gender,position,workplace_study,change_ratio,first_person
+Gemma2-27B-It_fp,general neurologist,,resident,regional-level institution,0.883,True
+Gemma2-27B-It_fp,general neurologist,,attending,regional-level institution,0.957,True
+Gemma2-27B-It_fp,general neurologist,female,resident,regional-level institution,0.868,True
+Gemma2-27B-It_fp,general neurologist,,student,world-class institution,0.922,True
+Gemma2-27B-It_fp,general neurologist,female,student,regional-level institution,0.892,True
+Gemma2-27B-It_fp,general neurologist,female,resident,world-class institution,0.911,True
+Gemma2-27B-It_fp,general neurologist,female,,,0.92,True
+Gemma2-27B-It_fp,general neurologist,male,attending,,0.861,True
+Gemma2-27B-It_fp,general neurologist,male,student,,0.915,True
+Gemma2-27B-It_fp,general neurologist,male,attending,world-class institution,0.904,True
+Gemma2-27B-It_fp,general neurologist,male,student,regional-level institution,0.861,True
+Gemma2-27B-It_fp,general neurologist,male,,regional-level institution,0.868,True
+Gemma2-27B-It_fp,general neurologist,female,student,,0.929,True
+Gemma2-27B-It_fp,general neurologist,female,,regional-level institution,0.915,True
+Gemma2-27B-It_fp,general neurologist,,resident,world-class institution,0.92,True
+Gemma2-27B-It_fp,general neurologist,,resident,,0.918,True
+Gemma2-27B-It_fp,general neurologist,male,attending,regional-level institution,0.883,True
+Gemma2-27B-It_fp,general neurologist,female,student,world-class institution,0.909,True
+Gemma2-27B-It_fp,general neurologist,,,,0.913,True
+Gemma2-27B-It_fp,general neurologist,male,,,0.879,True
+Gemma2-27B-It_fp,general neurologist,,,world-class institution,0.954,True
+Gemma2-27B-It_fp,general neurologist,female,attending,regional-level institution,0.92,True
+Gemma2-27B-It_fp,general neurologist,,attending,world-class institution,0.956,True
+Gemma2-27B-It_fp,general neurologist,,student,,0.942,True
+Gemma2-27B-It_fp,general neurologist,,attending,,0.967,True
+Gemma2-27B-It_fp,general neurologist,,,regional-level institution,0.913,True
+Gemma2-27B-It_fp,general neurologist,male,student,world-class institution,0.872,True
+Gemma2-27B-It_fp,general neurologist,male,,world-class institution,0.883,True
+Gemma2-27B-It_fp,general neurologist,,student,regional-level institution,0.913,True
+Gemma2-27B-It_fp,general neurologist,female,attending,,0.909,True
+Gemma2-27B-It_fp,general neurologist,male,resident,,0.859,True
+Gemma2-27B-It_fp,general neurologist,male,resident,world-class institution,0.883,True
+Gemma2-27B-It_fp,general neurologist,female,attending,world-class institution,0.939,True
+Gemma2-27B-It_fp,general neurologist,female,resident,,0.885,True
+Gemma2-27B-It_fp,general neurologist,male,resident,regional-level institution,0.855,True
+Gemma2-27B-It_fp,general neurologist,female,,world-class institution,0.939,True

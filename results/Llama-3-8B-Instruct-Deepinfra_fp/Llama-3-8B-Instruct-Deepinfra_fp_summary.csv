@@ -1,0 +1,37 @@
+model,profession,gender,position,workplace_study,change_ratio,first_person
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,resident,regional-level institution,0.988,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,attending,regional-level institution,0.98,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,resident,regional-level institution,0.97,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,student,world-class institution,0.974,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,student,regional-level institution,0.976,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,resident,world-class institution,0.98,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,,,0.982,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,attending,,0.978,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,student,,0.976,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,attending,world-class institution,0.965,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,student,regional-level institution,0.972,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,,regional-level institution,0.98,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,student,,0.99,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,,regional-level institution,0.98,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,resident,world-class institution,0.982,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,resident,,0.99,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,attending,regional-level institution,0.98,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,student,world-class institution,0.963,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,,,0.986,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,,,0.99,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,,world-class institution,0.986,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,attending,regional-level institution,0.972,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,attending,world-class institution,0.98,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,student,,0.986,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,attending,,0.984,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,,regional-level institution,0.986,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,student,world-class institution,0.945,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,,world-class institution,0.976,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,,student,regional-level institution,0.992,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,attending,,0.98,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,resident,,0.976,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,resident,world-class institution,0.963,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,attending,world-class institution,0.974,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,resident,,0.976,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,male,resident,regional-level institution,0.972,True
+Llama-3-8B-Instruct-Deepinfra_fp,general neurologist,female,,world-class institution,0.982,True

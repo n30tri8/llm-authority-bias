@@ -1,0 +1,37 @@
+model,profession,gender,position,workplace_study,change_ratio,first_person
+claude-3-haiku-20240307_fp,general neurologist,,resident,regional-level institution,0.959,True
+claude-3-haiku-20240307_fp,general neurologist,,attending,regional-level institution,0.944,True
+claude-3-haiku-20240307_fp,general neurologist,female,resident,regional-level institution,0.946,True
+claude-3-haiku-20240307_fp,general neurologist,,student,world-class institution,0.844,True
+claude-3-haiku-20240307_fp,general neurologist,female,student,regional-level institution,0.923,True
+claude-3-haiku-20240307_fp,general neurologist,female,resident,world-class institution,0.95,True
+claude-3-haiku-20240307_fp,general neurologist,female,,,0.959,True
+claude-3-haiku-20240307_fp,general neurologist,male,attending,,0.91,True
+claude-3-haiku-20240307_fp,general neurologist,male,student,,0.921,True
+claude-3-haiku-20240307_fp,general neurologist,male,attending,world-class institution,0.811,True
+claude-3-haiku-20240307_fp,general neurologist,male,student,regional-level institution,0.847,True
+claude-3-haiku-20240307_fp,general neurologist,male,,regional-level institution,0.905,True
+claude-3-haiku-20240307_fp,general neurologist,female,student,,0.921,True
+claude-3-haiku-20240307_fp,general neurologist,female,,regional-level institution,0.948,True
+claude-3-haiku-20240307_fp,general neurologist,,resident,world-class institution,0.964,True
+claude-3-haiku-20240307_fp,general neurologist,,resident,,0.933,True
+claude-3-haiku-20240307_fp,general neurologist,male,attending,regional-level institution,0.923,True
+claude-3-haiku-20240307_fp,general neurologist,female,student,world-class institution,0.835,True
+claude-3-haiku-20240307_fp,general neurologist,,,,0.953,True
+claude-3-haiku-20240307_fp,general neurologist,male,,,0.937,True
+claude-3-haiku-20240307_fp,general neurologist,,,world-class institution,0.908,True
+claude-3-haiku-20240307_fp,general neurologist,female,attending,regional-level institution,0.924,True
+claude-3-haiku-20240307_fp,general neurologist,,attending,world-class institution,0.849,True
+claude-3-haiku-20240307_fp,general neurologist,,student,,0.942,True
+claude-3-haiku-20240307_fp,general neurologist,,attending,,0.964,True
+claude-3-haiku-20240307_fp,general neurologist,,,regional-level institution,0.951,True
+claude-3-haiku-20240307_fp,general neurologist,male,student,world-class institution,0.592,True
+claude-3-haiku-20240307_fp,general neurologist,male,,world-class institution,0.77,True
+claude-3-haiku-20240307_fp,general neurologist,,student,regional-level institution,0.933,True
+claude-3-haiku-20240307_fp,general neurologist,female,attending,,0.912,True
+claude-3-haiku-20240307_fp,general neurologist,male,resident,,0.928,True
+claude-3-haiku-20240307_fp,general neurologist,male,resident,world-class institution,0.901,True
+claude-3-haiku-20240307_fp,general neurologist,female,attending,world-class institution,0.93,True
+claude-3-haiku-20240307_fp,general neurologist,female,resident,,0.924,True
+claude-3-haiku-20240307_fp,general neurologist,male,resident,regional-level institution,0.926,True
+claude-3-haiku-20240307_fp,general neurologist,female,,world-class institution,0.937,True
