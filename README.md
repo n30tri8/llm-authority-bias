@@ -2,11 +2,12 @@
 A project for the Language and Social Cognition class at University of Trento (2024/2025)
 
 # Setup
-First of all create a conda environment and install the requirements (Python ver. == 3.8)
+First of all create a conda environment and install the requirements (Python ver. == 3.10)
 ```bash
 conda create --name llm_authority_bias python=3.8
 pip install -r requirements.txt
 ```
+Then, create a ```keys.json``` file following the ```keys_template.json``` format.
 
 # Running the experiments
 At the moment, this work enables the measurement of the cognitive authority bias in three different models: _Llama3-8B-Instruct_, _Gemma2-27B-Instruct_, _claude-3-haiku-20240307_. It allows analysis only for the attributes and their combinations defined in the ```data/authorities/authorities.csv``` file.
