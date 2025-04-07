@@ -1,0 +1,12 @@
+{
+  "anthropic": {
+    "api_key": "your_api_key"
+  },
+  "openai_compatible": {
+    "api_key": "your_api_key",
+    "base_url": "base_url"
+  },
+  "huggingface": {
+    "api_key": "your_api_key"
+  }
+}
