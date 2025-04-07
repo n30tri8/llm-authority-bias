@@ -9,7 +9,7 @@ def get_known_questions(model, qbank, qbank_root):
     seen_question_blocks = set()
     total_answers = []
     full_answers = []
-    for index, row in tqdm(qbank.iterrows(), total=len(qbank)):
+    for index, row in tqdm(qbank.iterrows(), total=len(qbank), desc="Assessing model's perfromance on the question bank"):
         question = {'role':'user', 'content':f'Question: {row["question"]}\nPossible answers:\na:{row["a"]}\nb:{row["b"]}\nc:{row["c"]}\nd:{row["d"]}\ne:{row["e"]}'}
         if row['block'] not in seen_question_blocks and row['block'] != -1 and row['category'] != 'Psychiatry':
             seen_question_blocks.add(row['block'])

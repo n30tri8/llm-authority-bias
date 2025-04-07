@@ -8,8 +8,8 @@ def measure(model, qbank, profession, workplace_study, position, gender, first_p
     correct_answers = []
     expert_answers = []
     after_exp_m_answers = []
-    for index, row in tqdm(qbank.iterrows(), total=len(qbank)):
-        if row[model.model_name + '-known'].lower() == 'true' and row['category'] != 'Psychiatry':  # exclude Psychiatry
+    for index, row in tqdm(qbank.iterrows(), total=len(qbank), desc="Collecting Model Answers"):
+        if str(row[model.model_name + '-known']).lower() == 'true' and row['category'] != 'Psychiatry':  # exclude Psychiatry
             """ Logic: ask the question, introduce the expert, re-ask the question """
             question = { 'role': 'user', 'content': f'Question: {row["question"]}\nPossible answers:\na:{row["a"]}\nb:{row["b"]}\nc:{row["c"]}\nd:{row["d"]}\ne:{row["e"]}'}
             answer_before_expert = { 'role': 'assistant', 'content': row[model.model_name + '-fullanswer']}
