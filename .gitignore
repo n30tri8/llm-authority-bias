@@ -1,3 +1,5 @@
 keys.json
 *.pdf
 results*.csv
+data/question_bank/question_bank_base.csv
+data/question_bank/question_bank.csv

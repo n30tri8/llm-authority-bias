@@ -12,6 +12,24 @@
     "gated": true
   },
   {
+    "model_name": "Meta-Llama-3.1-8B-Instruct-Hugging-Serverless",
+    "model_id": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "backend": "huggingface_serverless",
+    "provider": "cohere"
+  },
+  {
+    "model_name": "dolphin-2.9.2-qwen2-72b-fp8-Hugging-Serverless",
+    "model_id": "novita-ai/dolphin-2.9.2-qwen2-72b-fp8",
+    "backend": "huggingface_serverless",
+    "provider": "novita"
+  },
+  {
+    "model_name": "DeepSeek-V3-0324-Hugging-Serverless",
+    "model_id": "deepseek-ai/DeepSeek-V3-0324",
+    "backend": "huggingface_serverless",
+    "provider": "hyperbolic"
+  },
+  {
     "model_name": "Meta-Llama-3.1-8B-Instruct-Turbo-Unsloth",
     "model_id": "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit",
     "backend": "huggingface"
