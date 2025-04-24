@@ -45,7 +45,7 @@
   {
     "model_name": "Llama-3-8B-Together.ai",
     "model_id": "meta-llama/Llama-3-8b-chat-hf",
-    "backend": "openai_compatible",
+    "backend": "togetherAI",
     "release_date": "18-04-24",
     "open_weight": true,
     "parameters": "8B"
@@ -66,5 +66,26 @@
     "model_name": "claude-3-haiku-20240307",
     "model_id": "claude-3-haiku-20240307",
     "backend": "anthropic"
+  },
+  {
+    "model_name": "Gemma-7b-Nvidia",
+    "model_id": "google/gemma-7b",
+    "backend": "nvidia"
+  },
+  {
+    "model_name": "Qwen-7b-Nvidia",
+    "model_id": "qwen/qwen2.5-7b-instruct",
+    "backend": "nvidia"
+  },
+  {
+    "model_name": "Llama-3.1-405b-Nvidia",
+    "model_id": "meta/llama-3.1-405b-instruct",
+    "backend": "nvidia"
+  },
+  {
+    "model_name": "mixtral-8x22b-Nvidia",
+    "model_id": "mistralai/mixtral-8x22b-instruct-v0.1",
+    "backend": "nvidia"
   }
+
 ]

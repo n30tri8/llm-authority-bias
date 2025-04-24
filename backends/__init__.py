@@ -1,10 +1,12 @@
 import json
 from pathlib import Path
 from typing import Dict, Union
+
+from backends.Nvidia_backend import NvidiaBackend
 from backends.anthropic_backend import AnthropicBackend
 from backends.huggingface_backend import HuggingfaceBackend
 from backends.huggingface_serverless_backend import HuggingfaceServerlessBackend
-from backends.openai_compatible_backend import GenericOpenAIBackend
+from backends.togetherAI_backend import TogetherAIBackend
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 def get_model(model_dict: Dict[str, Union[str, bool]], gen_args: Dict[str, Union[int, float]]):
@@ -21,8 +23,16 @@ def get_model(model_dict: Dict[str, Union[str, bool]], gen_args: Dict[str, Union
         model = HuggingfaceServerlessBackend(model_name, model_id, max_tokens=max_tokens, provider=provider, api_key=get_credentials(backend)['api_key'])
     elif(backend == "anthropic"):
         model = AnthropicBackend(model_id, max_tokens=max_tokens, api_key=get_credentials(backend)['api_key'])
-    elif(backend == "openai_compatible"):
-        model = GenericOpenAIBackend(model_name, model_id, max_tokens=max_tokens, api_key=get_credentials(backend)['api_key'], base_url=get_credentials(backend)['base_url'])
+    elif (backend == "togetherAI"):
+        model = TogetherAIBackend(model_name, model_id, max_tokens=max_tokens,
+                                  api_key=get_credentials(backend)['api_key'],
+                                  base_url=get_credentials(backend)['base_url'])
+    elif (backend == "nvidia"):
+        model = NvidiaBackend(model_name, model_id, max_tokens=max_tokens,
+                                  api_key=get_credentials(backend)['api_key'],
+                                  base_url=get_credentials(backend)['base_url'])
+    # elif(backend == "openai_compatible"):
+    #     model = GenericOpenAIBackend(model_name, model_id, max_tokens=max_tokens, api_key=get_credentials(backend)['api_key'], base_url=get_credentials(backend)['base_url'])
     return model
 
 
