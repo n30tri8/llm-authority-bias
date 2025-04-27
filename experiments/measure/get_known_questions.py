@@ -24,7 +24,15 @@ def get_known_questions(model, qbank, qbank_dir):
         if row['block'] not in seen_question_blocks and row['block'] != -1 and row['category'] != 'Psychiatry':
             seen_question_blocks.add(row['block'])
             """ Answer the question """
-            raw_answer = model.chat(prompt=[question])
+
+            try:
+                raw_answer = model.chat(prompt=[question])
+            except Exception as e:
+                out_logger.error(f"Error while prompting question {index}; {question}: {e}")
+                file_logger.error(f"Error while prompting question {index}; {question}: {e}")
+                total_answers.append(-1)  # It doesn't even try to answer
+                full_answers.append("")
+
             file_logger.info(f"Question index: {index}: ")
             file_logger.info(f"QUESTION: {question['content']}")
             file_logger.info(f"ANSWER: {raw_answer}")
@@ -33,7 +41,16 @@ def get_known_questions(model, qbank, qbank_dir):
             prompt_format_answer = {'role': 'user',
                                     'content': "I'm sorry I didn't understand what was final answer. Please extract the letter corresponding to the answer among a,b,c,d,e. Answer ONLY with the appropriate letter and nothing else."}
             prompt = ([question, answer, prompt_format_answer])
-            formatted_answer = model.chat(prompt=prompt)
+
+            try:
+                formatted_answer = model.chat(prompt=prompt)
+            except Exception as e:
+                out_logger.error(f"Error while second prompting question {index}; {question}: {e}")
+                file_logger.error(f"Error while second prompting question {index}; {question}: {e}")
+                total_answers.append(-1)  # It doesn't even try to answer
+                full_answers.append("")
+                continue
+
             if formatted_answer == row['answer']:
                 """ The model provides the correct answer. """
                 question_known = True
