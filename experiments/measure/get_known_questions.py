@@ -32,6 +32,7 @@ def get_known_questions(model, qbank, qbank_dir):
                 file_logger.error(f"Error while prompting question {index}; {question}: {e}")
                 total_answers.append(-1)  # It doesn't even try to answer
                 full_answers.append("")
+                continue
 
             file_logger.info(f"Question index: {index}: ")
             file_logger.info(f"QUESTION: {question['content']}")
