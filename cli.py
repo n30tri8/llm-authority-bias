@@ -7,7 +7,7 @@ from experiments.analyze.correlation import correlation
 from utils.utils import get_results_path, create_results_file
 from utils.logger import file_logger, out_logger
 from experiments.measure.measure import measure
-from experiments.measure.get_known_questions import get_known_questions, get_qbank_known_dir
+from experiments.measure.get_known_questions import get_known_questions, get_qbank_known_dir, get_known_questions_mmmlue
 from experiments.analyze.summary import summarize
 from backends import get_model
 from pathlib import Path
@@ -20,6 +20,7 @@ def get_args_parser():
 
     measure_parsers = sub_parsers.add_parser("extract-known")
     measure_parsers.add_argument('--qbank', type=str, required=True)
+    measure_parsers.add_argument('--benchmark_format', type=str, required=True)
     measure_parsers.add_argument('--model', type=str, required=True)
     measure_parsers.add_argument('--max_tokens', type=int, default=512)
     measure_parsers.add_argument('--temperature', type=float, default=0)
@@ -62,19 +63,18 @@ def main(args):
         model_name = args.model
         max_tokens = args.max_tokens
         temperature = args.temperature
-        model = load_model(model_name, max_tokens, temperature)
         log_msg = f"Loading model from registry with name {model_name}"
         file_logger.info(log_msg)
         out_logger.info(log_msg)
+        model = load_model(model_name, max_tokens, temperature)
 
-        """ Convert the question bank file into a dataframe """
-        qbank_df = pd.read_csv(args.qbank)
+        benchmark_format = args.benchmark_format
 
-        if (f'{model_name}-known' not in qbank_df.columns) or (f'{model_name}-fullanswer' not in qbank_df.columns):
-            log_msg = f"I cannot find the known questions or the log of the answer provided by models to such questions. Retrieving the questions for which the model knows the answer.."
-            file_logger.info(log_msg)
-            out_logger.info(log_msg)
-            get_known_questions(model=model, qbank=qbank_df, qbank_dir=args.qbank)
+        if benchmark_format == "mmmlu":
+            get_known_questions_mmmlue(model, args.qbank)
+        elif benchmark_format == "neurology board examples":
+            get_known_questions(model, args.qbank)
+
         log_msg = f"The questions known by the model were extracted."
         file_logger.info(log_msg)
         out_logger.info(log_msg)

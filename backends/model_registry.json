@@ -86,6 +86,11 @@
     "model_name": "mixtral-8x22b-Nvidia",
     "model_id": "mistralai/mixtral-8x22b-instruct-v0.1",
     "backend": "nvidia"
+  },
+  {
+    "model_name": "qwen-32b-Nvidia",
+    "model_id": "qwen/qwq-32b",
+    "backend": "nvidia"
   }
 
 ]
