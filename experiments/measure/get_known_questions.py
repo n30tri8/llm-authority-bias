@@ -3,6 +3,7 @@ import os
 from tqdm import tqdm
 
 from utils.logger import out_logger, file_logger
+from utils.multilingual_prompts import prompt_store
 
 
 def get_qbank_known_dir(model_name, qbank):
@@ -129,29 +130,8 @@ def get_known_questions_mmmlue(model, qbank_dir):
     # Read and combine question banks
     qbank = read_and_filter_question_banks(qbank_dir, categories_to_include)
 
-
-    prompt_store = {
-        'ask for precise answer': {
-            'EN': "I'm sorry I didn't understand what was final answer. Please extract the letter corresponding to the answer among A,B,C,D. Answer ONLY with the appropriate letter and nothing else.",
-            'AR': "عذرًا، لم أفهم الإجابة النهائية. يُرجى استخراج الحرف المقابل للإجابة من بين أ، ب، ج، د. أجب بالحرف المناسب فقط، ولا شيء غيره.",
-            'DE': "Es tut mir leid, ich habe die endgültige Antwort nicht verstanden. Bitte entnehmen Sie den Buchstaben aus A, B, C und D, der der Antwort entspricht. Antworten Sie NUR mit dem entsprechenden Buchstaben und sonst nichts.",
-            'IT': "Mi dispiace, non ho capito qual era la risposta finale. Per favore, estrai la lettera corrispondente alla risposta tra A, B, C, D. Rispondi SOLO con la lettera appropriata e nient'altro.",
-            'HI': "मुझे खेद है कि मैं समझ नहीं पाया कि अंतिम उत्तर क्या था। कृपया A,B,C,D में से उत्तर के संगत अक्षर निकालें। केवल उचित अक्षर से ही उत्तर दें, अन्य किसी अक्षर से नहीं।",
-            'JA': "申し訳ありませんが、最終的な答えが理解できませんでした。A、B、C、Dの中から答えに該当する文字を抽出してください。適切な文字のみを答えてください。",
-        },
-        'possible answers': {
-            'EN': "Possible answers",
-            'AR': "إجابات ممكنة",
-            'DE': "Mögliche Antworten",
-            'IT': "Risposte possibili",
-            'HI': "संभावित उत्तर",
-            'JA': "考えられる回答",
-        }
-
-    }
-
     for index, row in tqdm(qbank.iterrows(), total=len(qbank),
-                           desc="Assessing model's perfromance on the question bank"):
+                           desc="Assessing model's performance on the question bank"):
         question_language = row['language']
         question = {'role': 'user',
                     'content': f'{row["Question"]}\n{prompt_store["possible answers"][question_language]}:\nA:{row["A"]}\nB:{row["B"]}\nC:{row["C"]}\nD:{row["D"]}'}
