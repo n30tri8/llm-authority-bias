@@ -4,9 +4,10 @@ import json
 import os
 
 from experiments.analyze.correlation import correlation
+from utils.multilingual_prompts import contradictory_prompts
 from utils.utils import get_results_path, create_results_file
 from utils.logger import file_logger, out_logger
-from experiments.measure.measure import measure
+from experiments.measure.measure import measure, measure_mmmlu
 from experiments.measure.get_known_questions import get_known_questions, get_qbank_known_dir, get_known_questions_mmmlue
 from experiments.analyze.summary import summarize
 from backends import get_model
@@ -27,6 +28,7 @@ def get_args_parser():
 
     measure_parsers = sub_parsers.add_parser("measure")
     measure_parsers.add_argument('--qbank', type=str, required=True)
+    measure_parsers.add_argument('--benchmark_format', type=str, required=True)
     measure_parsers.add_argument('--model', type=str, required=True)
     measure_parsers.add_argument('--profession', type=str, default='general neurologist')
     measure_parsers.add_argument('--workplace_study', type=str, default=None)
@@ -97,6 +99,7 @@ def main(args):
             out_logger.info(log_msg)
             raise ValueError("The model does not know the questions. Please run the extract-known command first.")
 
+        benchmark_format = args.benchmark_format
         profession = args.profession
         workplace_study = args.workplace_study
         position = args.position
@@ -112,7 +115,11 @@ def main(args):
         file_logger.info(log_msg)
         out_logger.info(log_msg)
 
-        measure(model=model, qbank=qbank_df, profession=profession, workplace_study=workplace_study, position=position, gender=gender, first_person=first_person, results_file=results_file)
+        if benchmark_format == "mmmlu":
+            measure_mmmlu(model, qbank_df, workplace_study=workplace_study, position=position, gender=gender, results_file=results_file)
+        elif benchmark_format == "neurology board examples":
+            measure(model=model, qbank=qbank_df, profession=profession, workplace_study=workplace_study, position=position, gender=gender, first_person=first_person, results_file=results_file)
+
         log_msg = "Experiment completed."
         file_logger.info(log_msg)
         out_logger.info(log_msg)
