@@ -9,7 +9,7 @@ from utils.utils import get_results_path, create_results_file
 from utils.logger import file_logger, out_logger
 from experiments.measure.measure import measure, measure_mmmlu
 from experiments.measure.get_known_questions import get_known_questions, get_qbank_known_dir, get_known_questions_mmmlue
-from experiments.analyze.summary import summarize
+from experiments.analyze.summary import summarize, summarize_mmmlu
 from backends import get_model
 from pathlib import Path
 
@@ -41,6 +41,7 @@ def get_args_parser():
 
     summarize_parsers = sub_parsers.add_parser("summarize")
     summarize_parsers.add_argument('--model', type=str, required=True)
+    summarize_parsers.add_argument('--benchmark_format', type=str, required=True)
     summarize_parsers.add_argument('--results_path', type=str, default="results", help="Relative path starting from the project root")
     summarize_parsers.add_argument('--first_person', action='store_true')
 
@@ -105,9 +106,13 @@ def main(args):
         position = args.position
         gender = args.gender
         first_person = args.first_person
+
         results_root = PROJECT_ROOT / args.results_path
         result_path = get_results_path(results_root, model_name, first_person)
+        if benchmark_format == "mmmlu":
+            result_path = result_path / "mmmlu"
         results_file = create_results_file(results_path=result_path)
+
         log_msg = f"Running the experiment with cognitive authority defined as: job: [{profession}], work/study place: [{workplace_study}], position: [{position}], gender: [{gender}] "
         file_logger.info(log_msg)
         out_logger.info(log_msg)
@@ -125,10 +130,18 @@ def main(args):
         out_logger.info(log_msg)
     elif args.command_name == "summarize":
         model_name = args.model
+        benchmark_format = args.benchmark_format
         first_person = args.first_person
         results_root = PROJECT_ROOT / args.results_path
+
         result_path = get_results_path(results_root, model_name, first_person)
-        summarize(model_name=model_name, results_path=result_path, first_person=first_person)
+        if benchmark_format == "mmmlu":
+            result_path = result_path / "mmmlu"
+
+        if benchmark_format == "mmmlu":
+            summarize_mmmlu(model_name=model_name, results_path=result_path, first_person=first_person)
+        elif benchmark_format == "neurology board examples":
+            summarize(model_name=model_name, results_path=result_path, first_person=first_person)
     elif args.command_name == "correlation":
         results_path = PROJECT_ROOT / args.results_path
         if not os.path.exists(results_path):
