@@ -39,8 +39,7 @@ def summarize_mmmlu(model_name: str, results_path: Path, first_person: bool):
     summary_file_path = results_path / summary_file_name
     columns = [
         'model', 'gender', 'position', 'workplace_study',
-        'total_change_ratio', 'change_ratio_per_language', 'change_ratio_per_subject',
-        'first_person'
+        'change_ratio','first_person', 'language', 'subject', 'count'
     ]
     if not os.path.exists(summary_file_path):
         df = pd.DataFrame(columns=columns)
@@ -53,33 +52,48 @@ def summarize_mmmlu(model_name: str, results_path: Path, first_person: bool):
             file_path = results_path / filename
             result_df = pd.read_csv(file_path)
 
+            # Iterate over each combination of language and subject
+            for lang in result_df['language'].unique():
+                for subject in result_df['subject'].unique():
+                    subset = result_df[(result_df['language'] == lang) & (result_df['subject'] == subject)]
+                    if len(subset) > 0:
+                        change_ratio = sum(
+                            subset['expert_answer'] == subset['after_exp_m_answer']
+                        ) / len(subset)
+
+                        new_row = {
+                            'model': model_name,
+                            'workplace_study': subset['workplace_study'].iloc[0],
+                            'position': subset['position'].iloc[0],
+                            'gender': subset['gender'].iloc[0],
+                            'language': lang,
+                            'subject': subject,
+                            'change_ratio': round(change_ratio, 3),
+                            'count': len(subset),
+                            'first_person': first_person
+                        }
+                        new_row = pd.DataFrame([new_row])
+                        df = pd.concat([df, new_row], ignore_index=True)
+
             # Calculate total change_ratio
             total_change_ratio = sum(
                 [1 if row['expert_answer'] == row['after_exp_m_answer'] else 0 for _, row in result_df.iterrows()]
             ) / len(result_df)
-
-            # Calculate change_ratio per language
-            change_ratio_per_language = result_df.groupby('language').apply(
-                lambda group: sum(group['expert_answer'] == group['after_exp_m_answer']) / len(group)
-            ).to_dict()
-
-            # Calculate change_ratio per subject
-            change_ratio_per_subject = result_df.groupby('subject').apply(
-                lambda group: sum(group['expert_answer'] == group['after_exp_m_answer']) / len(group)
-            ).to_dict()
 
             new_row = {
                 'model': model_name,
                 'workplace_study': result_df['workplace_study'][0],
                 'position': result_df['position'][0],
                 'gender': result_df['gender'][0],
-                'total_change_ratio': round(total_change_ratio, 3),
-                'change_ratio_per_language': change_ratio_per_language,
-                'change_ratio_per_subject': change_ratio_per_subject,
+                'language': 'All',
+                'subject': 'All',
+                'change_ratio': round(total_change_ratio, 3),
+                'count': len(result_df),
                 'first_person': first_person
             }
             new_row = pd.DataFrame([new_row])
             df = pd.concat([df, new_row], ignore_index=True)
+
             df.to_csv(summary_file_path, index=False)
 
     log_msg = f"MMMLU Summary built for the model [{model_name}] and first_person set to [{first_person}].\nThe file can be found at the path: {summary_file_path}"

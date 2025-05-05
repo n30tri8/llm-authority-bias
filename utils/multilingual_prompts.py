@@ -96,3 +96,12 @@ subject2_profession = {
     'jurisprudence': 'lawyer',
     'sociology': 'sociologist',
 }
+
+languages = {
+    # 'EN': 'English',
+    'AR': 'Arabic',
+    'DE': 'German',
+    'IT': 'Italian',
+    'HI': 'Hindi',
+    'JA': 'Japanese'
+}
