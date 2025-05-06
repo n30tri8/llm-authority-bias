@@ -1,19 +1,20 @@
 import argparse
-import pandas as pd
 import json
 import os
-
-from experiments.analyze.correlation import correlation
-from utils.multilingual_prompts import contradictory_prompts
-from utils.utils import get_results_path, create_results_file
-from utils.logger import file_logger, out_logger
-from experiments.measure.measure import measure, measure_mmmlu
-from experiments.measure.get_known_questions import get_known_questions, get_qbank_known_dir, get_known_questions_mmmlue
-from experiments.analyze.summary import summarize, summarize_mmmlu
-from backends import get_model
 from pathlib import Path
 
+import pandas as pd
+
+from backends import get_model
+from experiments.analyze.correlation import correlation
+from experiments.analyze.summary import summarize, summarize_mmmlu
+from experiments.measure.get_known_questions import get_known_questions, get_qbank_known_dir, get_known_questions_mmmlue
+from experiments.measure.measure import measure, measure_mmmlu
+from utils.logger import file_logger, out_logger
+from utils.utils import get_results_path, create_results_file
+
 PROJECT_ROOT = Path(__file__).resolve().parent
+
 
 def get_args_parser():
     parser = argparse.ArgumentParser('', add_help=False)
@@ -37,18 +38,22 @@ def get_args_parser():
     measure_parsers.add_argument('--first_person', action='store_true')
     measure_parsers.add_argument('--max_tokens', type=int, default=512)
     measure_parsers.add_argument('--temperature', type=float, default=0)
-    measure_parsers.add_argument('--results_path', type=str, default="results", help="Relative path starting from the project root")
+    measure_parsers.add_argument('--results_path', type=str, default="results",
+                                 help="Relative path starting from the project root")
 
     summarize_parsers = sub_parsers.add_parser("summarize")
     summarize_parsers.add_argument('--model', type=str, required=True)
     summarize_parsers.add_argument('--benchmark_format', type=str, required=True)
-    summarize_parsers.add_argument('--results_path', type=str, default="results", help="Relative path starting from the project root")
+    summarize_parsers.add_argument('--results_path', type=str, default="results",
+                                   help="Relative path starting from the project root")
     summarize_parsers.add_argument('--first_person', action='store_true')
 
     correlation_compute = sub_parsers.add_parser("correlation")
-    correlation_compute.add_argument('--results_path', type=str, default="results", help="Relative path starting from the project root")
+    correlation_compute.add_argument('--results_path', type=str, default="results",
+                                     help="Relative path starting from the project root")
     correlation_compute.add_argument('--first_person', action='store_true')
     return parser
+
 
 def load_model(model_name, max_tokens, temperature):
     model_registry = json.load(open(PROJECT_ROOT / "backends/model_registry.json", 'r'))
@@ -113,7 +118,7 @@ def main(args):
             result_path = result_path / "mmmlu"
         results_file = create_results_file(results_path=result_path)
 
-        log_msg = f"Running the experiment with cognitive authority defined as: job: [{profession}], work/study place: [{workplace_study}], position: [{position}], gender: [{gender}] "
+        log_msg = f"Running the experiment with cognitive authority defined as: work/study place: [{workplace_study}], position: [{position}], gender: [{gender}] "
         file_logger.info(log_msg)
         out_logger.info(log_msg)
         log_msg = f"First person? [{first_person}]"
@@ -121,9 +126,11 @@ def main(args):
         out_logger.info(log_msg)
 
         if benchmark_format == "mmmlu":
-            measure_mmmlu(model, qbank_df, workplace_study=workplace_study, position=position, gender=gender, results_file=results_file)
+            measure_mmmlu(model, qbank_df, workplace_study=workplace_study, position=position, gender=gender,
+                          results_file=results_file)
         elif benchmark_format == "neurology board examples":
-            measure(model=model, qbank=qbank_df, profession=profession, workplace_study=workplace_study, position=position, gender=gender, first_person=first_person, results_file=results_file)
+            measure(model=model, qbank=qbank_df, profession=profession, workplace_study=workplace_study,
+                    position=position, gender=gender, first_person=first_person, results_file=results_file)
 
         log_msg = "Experiment completed."
         file_logger.info(log_msg)

@@ -91,6 +91,12 @@
     "model_name": "qwen-32b-Nvidia",
     "model_id": "qwen/qwq-32b",
     "backend": "nvidia"
+  },
+  {
+    "model_name": "llama-3.1-8b-instruct-Nvidia",
+    "model_id": "meta/llama-3.1-8b-instruct",
+    "backend": "nvidia"
   }
+
 
 ]
