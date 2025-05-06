@@ -8,7 +8,7 @@ import pandas as pd
 from backends import get_model
 from experiments.analyze.correlation import correlation
 from experiments.analyze.summary import summarize, summarize_mmmlu
-from experiments.measure.get_known_questions import get_known_questions, get_qbank_known_dir, get_known_questions_mmmlue
+from experiments.measure.get_known_questions import get_known_questions, get_qbank_known_dir, get_known_questions_mmmlu
 from experiments.measure.measure import measure, measure_mmmlu
 from utils.logger import file_logger, out_logger
 from utils.utils import get_results_path, create_results_file
@@ -79,7 +79,7 @@ def main(args):
         benchmark_format = args.benchmark_format
 
         if benchmark_format == "mmmlu":
-            get_known_questions_mmmlue(model, args.qbank)
+            get_known_questions_mmmlu(model, args.qbank)
         elif benchmark_format == "neurology board examples":
             get_known_questions(model, args.qbank)
 

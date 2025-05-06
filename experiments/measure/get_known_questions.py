@@ -9,7 +9,7 @@ from utils.multilingual_prompts import prompt_store
 def get_qbank_known_dir(model_name, qbank):
     filename = f'qbank_known_{model_name}.csv'
     qbank_root = qbank[:qbank.rfind('/')]
-    dir_name = os.path.join(qbank_root, filename)
+    dir_name = os.path.join(qbank_root, 'extracted_knowns', filename)
     return dir_name
 
 
@@ -119,7 +119,7 @@ def read_and_filter_question_banks(qbank_dir, categories_filter=None):
         return pd.DataFrame()
 
 
-def get_known_questions_mmmlue(model, qbank_dir):
+def get_known_questions_mmmlu(model, qbank_dir):
     tqdm.pandas()
     total_answers = []
     full_answers = []
