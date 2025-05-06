@@ -9,9 +9,15 @@ from utils.multilingual_prompts import prompt_store
 def get_qbank_known_dir(model_name, qbank):
     filename = f'qbank_known_{model_name}.csv'
     qbank_root = qbank[:qbank.rfind('/')]
-    dir_name = os.path.join(qbank_root, 'extracted_knowns', filename)
+    dir_name = os.path.join(qbank_root, filename)
     return dir_name
 
+def get_qbank_known_dir_mmmlue(model_name, qbank):
+    filename = f'qbank_known_{model_name}.csv'
+    qbank_root = qbank[:qbank.rfind('/')]
+    dir_name = os.path.join(qbank_root,'extracted_knowns', filename)
+
+    return dir_name
 
 def get_known_questions(model, qbank_dir):
     qbank = pd.read_csv(qbank_dir)
@@ -176,6 +182,6 @@ def get_known_questions_mmmlu(model, qbank_dir):
 
     qbank[model.model_name + '-known'] = total_answers
     qbank[model.model_name + '-fullanswer'] = full_answers
-    qbank_known_dir = get_qbank_known_dir(model.model_name, qbank_dir)
+    qbank_known_dir = get_qbank_known_dir_mmmlue(model.model_name, qbank_dir)
     qbank.to_csv(qbank_known_dir, index=False)
     out_logger.info("QBank updated.")
