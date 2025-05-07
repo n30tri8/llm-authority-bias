@@ -25,6 +25,8 @@ def create_results_file(results_path):
     if not os.path.exists(results_path):
         os.makedirs(results_path)
     for filename in os.listdir(results_path):
+        if not os.path.isfile(os.path.join(results_path, filename)):
+            continue
         numbers = re.findall(r'\d+', filename)
         # Convert extracted numbers to integers
         id = int("".join(numbers))
