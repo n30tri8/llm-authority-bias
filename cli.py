@@ -91,6 +91,13 @@ def main(args):
         model_name = args.model
         max_tokens = args.max_tokens
         temperature = args.temperature
+        benchmark_format = args.benchmark_format
+        profession = args.profession
+        workplace_study = args.workplace_study
+        position = args.position
+        gender = args.gender
+        first_person = args.first_person
+
         model = load_model(model_name, max_tokens, temperature)
         log_msg = f"Loading model from registry with name {model_name}"
         file_logger.info(log_msg)
@@ -98,19 +105,14 @@ def main(args):
 
         """ Convert the question bank file into a dataframe """
         qbank_known_dir = get_qbank_known_dir(model_name, args.qbank)
+
+#todo add extracted knownds to the address
         qbank_df = pd.read_csv(qbank_known_dir)
         if (f'{model_name}-known' not in qbank_df.columns) or (f'{model_name}-fullanswer' not in qbank_df.columns):
             log_msg = f"I cannot find the known questions or the log of the answer provided by models to such questions. Extract them first."
             file_logger.info(log_msg)
             out_logger.info(log_msg)
             raise ValueError("The model does not know the questions. Please run the extract-known command first.")
-
-        benchmark_format = args.benchmark_format
-        profession = args.profession
-        workplace_study = args.workplace_study
-        position = args.position
-        gender = args.gender
-        first_person = args.first_person
 
         results_root = PROJECT_ROOT / args.results_path
         result_path = get_results_path(results_root, model_name, first_person)
