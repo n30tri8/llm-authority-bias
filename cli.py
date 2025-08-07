@@ -33,6 +33,7 @@ def get_args_parser():
     measure_parsers.add_argument('--model', type=str, required=True)
     measure_parsers.add_argument('--profession', type=str, default='general neurologist')
     measure_parsers.add_argument('--workplace_study', type=str, default=None)
+    measure_parsers.add_argument('--debiasing', action='store_true', help="Enable debiasing")
     measure_parsers.add_argument('--position', type=str, default=None)
     measure_parsers.add_argument('--gender', type=str, default=None)
     measure_parsers.add_argument('--first_person', action='store_true')
@@ -97,6 +98,7 @@ def main(args):
         position = args.position
         gender = args.gender
         first_person = args.first_person
+        debiasing = getattr(args, 'debiasing', False)
 
         model = load_model(model_name, max_tokens, temperature)
         log_msg = f"Loading model from registry with name {model_name}"
@@ -129,10 +131,11 @@ def main(args):
 
         if benchmark_format == "mmmlu":
             measure_mmmlu(model, qbank_df, workplace_study=workplace_study, position=position, gender=gender,
-                          results_file=results_file)
+                          results_file=results_file, debiasing=debiasing)
         elif benchmark_format == "neurology board examples":
             measure(model=model, qbank=qbank_df, profession=profession, workplace_study=workplace_study,
-                    position=position, gender=gender, first_person=first_person, results_file=results_file)
+                    position=position, gender=gender, first_person=first_person, results_file=results_file,
+                    debiasing=debiasing)
 
         log_msg = "Experiment completed."
         file_logger.info(log_msg)
