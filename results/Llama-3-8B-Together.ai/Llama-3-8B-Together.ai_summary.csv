@@ -1,2 +1,4 @@
 model,profession,gender,position,workplace_study,change_ratio,first_person
 Llama-3-8B-Together.ai,general neurologist,female,attending,regional-level institution,0.631,False
+Llama-3-8B-Together.ai,entrepreneur,,,big corporation,0.193,False
+Llama-3-8B-Together.ai,general neurologist,female,attending,regional-level institution,0.631,False
